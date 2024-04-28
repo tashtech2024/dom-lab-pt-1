@@ -1,14 +1,31 @@
-// Menu data structure
+//? Menu data structure
 var menuLinks = [
     { text: 'about', href: '/about' },
     { text: 'catalog', href: '/catalog' },
     { text: 'orders', href: '/orders' },
     { text: 'account', href: '/account' },
 ];
+// ? Part 4: Adding Menu Interaction //? Menu data structure pt 2 
+var menuLinks = [
+    {text: 'about', href: '/about'},
+    {text: 'catalog', href: '#', subLinks: [
+      {text: 'all', href: '/catalog/all'},
+      {text: 'top selling', href: '/catalog/top'},
+      {text: 'search', href: '/catalog/search'},
+    ]},
+    {text: 'orders', href: '#' , subLinks: [
+      {text: 'new', href: '/orders/new'},
+      {text: 'pending', href: '/orders/pending'},
+      {text: 'history', href: '/orders/history'},
+    ]},
+    {text: 'account', href: '#', subLinks: [
+      {text: 'profile', href: '/account/profile'},
+      {text: 'sign out', href: '/account/signout'},
+    ]},
+  ];
 
 // ? Select and cache the <main> element in a variable named mainEl.
 const mainEl = document.querySelector('main');
-
 // ?Set the background color of mainEl to the value stored in the --main-bg CSS custom property.
 //? Hint: Assign a string that uses the CSS var() function like this: 'var(--main-bg)'.
 
@@ -46,3 +63,32 @@ for (let i = 0; i < menuLinks.length; i++) {
     a.textContent = menuLinks[i].text // On the new element, add an href attribute with its value set to the href property of the "link" object.
     topMenuEl.appendChild(a); // Append the new element to the topMenuEl element
 }
+// ?DOM Manipulation (Part Two)
+// ? :Part 3: Creating the Submenu
+
+// ? Select and cache the <nav id="sub-menu"> element in a variable named subMenuEl.
+const subMenuEl = document.getElementById('sub-menu');
+// Set the height subMenuEl element to be "100%".
+subMenuEl.style.height = '100%';
+// ? Set the background color of subMenuEl to the value stored in the --sub-menu-bg CSS custom property.
+subMenuEl.style.background ='var(--sub-menu-bg)';
+//? Add the class of flex-around to the subMenuEl element.
+subMenuEl.className = ('flex-around');
+console.log(subMenuEl);
+
+// ?Set the CSS position property of subMenuEl to the value of absolute.
+subMenuEl.style.position = "absolute";
+// ?Set the CSS top property of subMenuEl to the value of 0.
+subMenuEl.style.top = 0;
+
+console.log(subMenuEl);
+// ?Part 4: Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks.
+const topMenuLinks = document.querySelector('a');
+// ?Attach a delegated 'click' event listener to topMenuEl.
+//?The first line of code of the event listener function should call the event object's preventDefault() method. 
+// ! ASK about this one 
+document.getElementById("top-menu").addEventListener("click",
+function(event){
+  event.preventDefault();
+});
+console.log(topMenuEl);
